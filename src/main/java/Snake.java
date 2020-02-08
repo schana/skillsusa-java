@@ -16,7 +16,7 @@ public abstract class Snake {
         Cell nextHead = this.body.getHead().getNeighbor(direction);
         this.consumedFood = nextHead.equals(food);
         this.body.move(nextHead, consumedFood);
-        if (!this.body.isValid(this.rows, this.columns)){
+        if (!this.body.isValid(this.rows, this.columns)) {
             this.alive = false;
         }
     }
@@ -29,31 +29,8 @@ public abstract class Snake {
         return this.alive;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append('+');
-        for(int c=0; c<columns; c++){
-            sb.append(" - ");
-        }
-        sb.append("+\n");
-        for(int r=0; r<rows; r++) {
-            sb.append('|');
-            for(int c=0; c<columns; c++){
-                if(body.contains(new Cell(r, c))) {
-                    sb.append(" X ");
-                }else{
-                    sb.append("   ");
-                }
-            }
-            sb.append("|\n");
-        }
-        sb.append('+');
-        for(int c=0; c<columns; c++){
-            sb.append(" - ");
-        }
-        sb.append("+\n");
-        return sb.toString();
+    public Body getBody() {
+        return body;
     }
 
     public abstract Direction getNextDirection(Cell food);

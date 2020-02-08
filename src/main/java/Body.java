@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
-public class Body {
+public class Body implements Iterable<Cell> {
     private List<Cell> body;
 
     public Body(Cell head) {
@@ -27,18 +28,34 @@ public class Body {
             return false;
         }
         // Check boundaries
-        for(Cell cell : body) {
-            if (cell.getRow() < 0 || cell.getRow() >= rows) {
-                return false;
-            }
-            if (cell.getColumn() < 0 || cell.getColumn() >= columns) {
+        for (Cell cell : body) {
+            if (!isBodyPartValid(cell, rows, columns)) {
                 return false;
             }
         }
         return true;
     }
 
+    public boolean isBodyPartValid(Cell cell, int rows, int columns) {
+        if (cell.getRow() < 0 || cell.getRow() >= rows) {
+            return false;
+        }
+        if (cell.getColumn() < 0 || cell.getColumn() >= columns) {
+            return false;
+        }
+        return true;
+    }
+
+    public List<Cell> getCells() {
+        return body;
+    }
+
     public Cell getHead() {
         return body.get(0);
+    }
+
+    @Override
+    public Iterator<Cell> iterator() {
+        return body.iterator();
     }
 }

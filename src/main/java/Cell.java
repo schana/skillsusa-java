@@ -53,4 +53,9 @@ public class Cell {
         }
         return false;
     }
+
+    @Override
+    public int hashCode() {
+        return row + column * 10000;
+    }
 }
