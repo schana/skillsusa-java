@@ -2,8 +2,7 @@ package game.internal;
 
 import game.Board;
 import game.Cell;
-import game.mover.BlindMover;
-import game.mover.CompletionistMover;
+import game.mover.MyMover;
 
 import java.util.HashSet;
 import java.util.Random;
@@ -27,7 +26,7 @@ public class GameState {
                 cells.add(new Cell(r, c));
             }
         }
-        this.snake = new Snake(new Cell(new Random().nextInt(ROWS), new Random().nextInt(COLUMNS)), new CompletionistMover(board));
+        this.snake = new Snake(new Cell(new Random().nextInt(ROWS), new Random().nextInt(COLUMNS)), new MyMover(board));
         this.food = new Food(getRandomFreeCell());
         board.setBody(snake.getBody().getCells());
         board.setFood(food.get());

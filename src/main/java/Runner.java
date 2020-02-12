@@ -8,9 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Runner implements ActionListener {
-    private static final int DELAY = 1;
+    private static final int DELAY = 50;
     private static final int DEATH_PAUSE = 1000 / DELAY;
-    private static final boolean DISPLAY = false;
+    private static final boolean DISPLAY = true;
     private GameState gameState;
     private Board board;
     private Base base;

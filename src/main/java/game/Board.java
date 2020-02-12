@@ -17,7 +17,8 @@ public class Board {
     private List<Cell> body;
     private Cell food;
 
-    public Board() {}
+    public Board() {
+    }
 
     /**
      * @return the Cell representing the head of the snake

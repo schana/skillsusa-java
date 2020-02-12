@@ -1,8 +1,9 @@
-package game.mover;
+package game.mover.examples;
 
 import game.Board;
 import game.Cell;
 import game.Direction;
+import game.mover.SnakeMover;
 
 public class CompletionistMover extends SnakeMover {
 
