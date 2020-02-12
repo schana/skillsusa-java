@@ -8,19 +8,34 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Runner implements ActionListener {
+    private static final int DELAY = 1;
+    private static final int DEATH_PAUSE = 1000 / DELAY;
+    private static final boolean DISPLAY = false;
     private GameState gameState;
     private Board board;
     private Base base;
     private Timer timer;
-    private static final int DELAY = 50;
-    private int deathPause = 1000 / DELAY;
+    private int runs = 0;
+    private int deathPause = DEATH_PAUSE;
 
     public Runner() {
         board = new Board();
         gameState = new GameState(board);
-        base = new Base(gameState);
-        timer = new Timer(DELAY, this);
-        timer.start();
+        if (DISPLAY) {
+            base = new Base(gameState);
+            timer = new Timer(DELAY, this);
+            timer.start();
+        } else {
+            while (runs < 10000) {
+                if (gameState.isAlive()) {
+                    gameState.step();
+                } else {
+                    runs++;
+                    System.out.println(runs + " Score: " + gameState.getScore() + ", Age: " + gameState.getAge());
+                    gameState = new GameState(new Board());
+                }
+            }
+        }
     }
 
     @Override
@@ -30,9 +45,11 @@ public class Runner implements ActionListener {
             gameState.step();
         } else {
             if (deathPause <= 0) {
+                runs++;
+                System.out.println(runs + " Score: " + gameState.getScore() + ", Age: " + gameState.getAge());
                 gameState = new GameState(new Board());
                 base.setGameState(gameState);
-                deathPause = 1000 / DELAY;
+                deathPause = DEATH_PAUSE;
             } else {
                 deathPause--;
             }
@@ -42,7 +59,9 @@ public class Runner implements ActionListener {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             Runner runner = new Runner();
-            runner.base.initialize();
+            if (DISPLAY) {
+                runner.base.initialize();
+            }
         });
     }
 }
