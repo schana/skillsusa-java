@@ -9,6 +9,13 @@ public class Cell {
         this.column = column;
     }
 
+    /**
+     * Gets a Cell's neighbor in the specified direction. Note that this does
+     * not perform any boundary checking and could return invalid cells
+     *
+     * @param direction the direction of the neighbor
+     * @return the neighbor cell in the specified direction
+     */
     public Cell getNeighbor(Direction direction) {
         switch (direction) {
             case UP:
@@ -47,15 +54,27 @@ public class Cell {
         return row;
     }
 
+    /**
+     * Determines equality based on hash
+     *
+     * @param obj object to compare to
+     * @return whether hashes match
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Cell) {
             Cell other = (Cell) obj;
-            return this.row == other.row && this.column == other.column;
+            return this.hashCode() == other.hashCode();
         }
         return false;
     }
 
+    /**
+     * Hash calculated based on offset column and row, such that two cells with
+     * equal rows and columns will have the same hash code
+     *
+     * @return simple hash based on row and column
+     */
     @Override
     public int hashCode() {
         return row + column * 10000;

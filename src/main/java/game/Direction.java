@@ -1,5 +1,8 @@
 package game;
 
+/**
+ * Enum representing the possible directions for the snake to move
+ */
 public enum Direction {
     UP("u"),
     DOWN("d"),
