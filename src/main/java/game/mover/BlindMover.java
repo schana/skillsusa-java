@@ -1,11 +1,18 @@
-public class BlindSnake extends Snake {
-    public BlindSnake(Cell head, int rows, int columns) {
-        super(head, rows, columns);
+package game.mover;
+
+import game.Board;
+import game.Cell;
+import game.Direction;
+
+public class BlindMover extends SnakeMover {
+    public BlindMover(Board board) {
+        super(board);
     }
 
     @Override
-    public Direction getNextDirection(Cell food) {
-        Cell head = getBody().getHead();
+    public Direction getNextDirection() {
+        Cell head = board.getHead();
+        Cell food = board.getFood();
         if (head.getRow() > food.getRow()) {
             return Direction.UP;
         } else if (head.getRow() < food.getRow()) {

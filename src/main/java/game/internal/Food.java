@@ -1,3 +1,7 @@
+package game.internal;
+
+import game.Cell;
+
 public class Food {
     private Cell location;
 

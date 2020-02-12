@@ -1,3 +1,8 @@
+package game.internal;
+
+import game.Board;
+import game.Cell;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -11,10 +16,6 @@ public class Body implements Iterable<Cell> {
         this.body.add(head);
     }
 
-    public boolean contains(Cell cell) {
-        return this.body.contains(cell);
-    }
-
     public void move(Cell nextHead, boolean shouldGrow) {
         this.body.add(0, nextHead);
         if (!shouldGrow) {
@@ -22,25 +23,25 @@ public class Body implements Iterable<Cell> {
         }
     }
 
-    public boolean isValid(int rows, int columns) {
+    public boolean isValid() {
         // Check for overlaps
         if (new HashSet<>(this.body).size() != body.size()) {
             return false;
         }
         // Check boundaries
         for (Cell cell : body) {
-            if (!isBodyPartValid(cell, rows, columns)) {
+            if (!isBodyPartValid(cell)) {
                 return false;
             }
         }
         return true;
     }
 
-    public boolean isBodyPartValid(Cell cell, int rows, int columns) {
-        if (cell.getRow() < 0 || cell.getRow() >= rows) {
+    public boolean isBodyPartValid(Cell cell) {
+        if (cell.getRow() < 0 || cell.getRow() >= Board.ROWS) {
             return false;
         }
-        if (cell.getColumn() < 0 || cell.getColumn() >= columns) {
+        if (cell.getColumn() < 0 || cell.getColumn() >= Board.COLUMNS) {
             return false;
         }
         return true;

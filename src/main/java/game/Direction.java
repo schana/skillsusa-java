@@ -1,3 +1,5 @@
+package game;
+
 public enum Direction {
     UP("u"),
     DOWN("d"),

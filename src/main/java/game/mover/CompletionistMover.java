@@ -1,12 +1,19 @@
-public class MySnake extends Snake {
-    public MySnake(Cell head, int rows, int columns) {
-        super(head, rows, columns);
+package game.mover;
+
+import game.Board;
+import game.Cell;
+import game.Direction;
+
+public class CompletionistMover extends SnakeMover {
+
+    public CompletionistMover(Board board) {
+        super(board);
     }
 
     @Override
-    public Direction getNextDirection(Cell food) {
-        Cell head = body.getHead();
-        if (head.getRow() == rows - 1) {
+    public Direction getNextDirection() {
+        Cell head = board.getHead();
+        if (head.getRow() == Board.ROWS - 1) {
             if (head.getColumn() % 2 == 0) {
                 return Direction.RIGHT;
             } else {
@@ -20,7 +27,7 @@ public class MySnake extends Snake {
                     return Direction.LEFT;
                 }
             } else if (head.getRow() == 1) {
-                if (head.getColumn() == columns - 1) {
+                if (head.getColumn() == Board.COLUMNS - 1) {
                     return Direction.UP;
                 } else {
                     if (head.getColumn() % 2 == 0) {

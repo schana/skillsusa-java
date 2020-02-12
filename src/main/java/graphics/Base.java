@@ -1,10 +1,18 @@
+package graphics;
+
+import game.internal.GameState;
+
 import javax.swing.*;
 
 public class Base extends JFrame {
     private final Painter painter;
 
-    public Base(Board board) {
-        painter = new Painter(board);
+    public Base(GameState gameState) {
+        painter = new Painter(gameState);
+    }
+
+    public void setGameState(GameState gameState) {
+        painter.setGameState(gameState);
     }
 
     public void initialize() {
