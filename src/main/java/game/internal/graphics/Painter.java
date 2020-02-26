@@ -1,4 +1,4 @@
-package graphics;
+package game.internal.graphics;
 
 import game.Board;
 import game.Cell;

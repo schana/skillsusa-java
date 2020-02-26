@@ -2,7 +2,7 @@ package game.internal;
 
 import game.Cell;
 import game.Direction;
-import game.mover.SnakeMover;
+import game.SnakeMover;
 
 public class Snake {
     private Body body;

@@ -1,6 +1,6 @@
 import game.Board;
 import game.internal.GameState;
-import graphics.Base;
+import game.internal.graphics.Base;
 
 import javax.swing.*;
 import java.awt.*;

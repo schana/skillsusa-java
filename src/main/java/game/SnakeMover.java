@@ -1,7 +1,4 @@
-package game.mover;
-
-import game.Board;
-import game.Direction;
+package game;
 
 /**
  * This is the abstract base mover that you'll be extending. It informs the

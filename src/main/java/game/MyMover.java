@@ -1,7 +1,4 @@
-package game.mover;
-
-import game.Board;
-import game.Direction;
+package game;
 
 public class MyMover extends SnakeMover {
     public MyMover(Board board) {

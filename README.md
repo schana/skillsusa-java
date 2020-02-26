@@ -7,12 +7,13 @@ This repository houses the code for contestants to build their own Snake AI.
 This game of snake takes place on a fixed game board. The snake can move in any
 direction, but will die if it touches a wall or itself. If it touches a piece
 of food, its length will increase by one.
+
 Each game is limited to 1000 moves.
 
 ## Game Board
 
 Our game board is a 10x10 grid referenced by a (row, column) tuple. This is
-represented by the Cell object in the code. Notice the indexing starts in the
+represented by the Cell object in the code. Notice the indexing starts at zero in the
 upper left corner. The directions the snake can move are in relation to this
 board.
 
@@ -53,51 +54,3 @@ Here are some additional options:
 ### Greedy
 
 ### A* search
-
-```
-function reconstruct_path(cameFrom, current)
-    total_path := {current}
-    while current in cameFrom.Keys:
-        current := cameFrom[current]
-        total_path.prepend(current)
-    return total_path
-
-// A* finds a path from start to goal.
-// h is the heuristic function. h(n) estimates the cost to reach goal from node n.
-function A_Star(start, goal, h)
-    // The set of discovered nodes that may need to be (re-)expanded.
-    // Initially, only the start node is known.
-    openSet := {start}
-
-    // For node n, cameFrom[n] is the node immediately preceding it on the cheapest path from start to n currently known.
-    cameFrom := an empty map
-
-    // For node n, gScore[n] is the cost of the cheapest path from start to n currently known.
-    gScore := map with default value of Infinity
-    gScore[start] := 0
-
-    // For node n, fScore[n] := gScore[n] + h(n).
-    fScore := map with default value of Infinity
-    fScore[start] := h(start)
-
-    while openSet is not empty
-        current := the node in openSet having the lowest fScore[] value
-        if current = goal
-            return reconstruct_path(cameFrom, current)
-
-        openSet.Remove(current)
-        for each neighbor of current
-            // d(current,neighbor) is the weight of the edge from current to neighbor
-            // tentative_gScore is the distance from start to the neighbor through current
-            tentative_gScore := gScore[current] + d(current, neighbor)
-            if tentative_gScore < gScore[neighbor]
-                // This path to neighbor is better than any previous one. Record it!
-                cameFrom[neighbor] := current
-                gScore[neighbor] := tentative_gScore
-                fScore[neighbor] := gScore[neighbor] + h(neighbor)
-                if neighbor not in openSet
-                    openSet.add(neighbor)
-
-    // Open set is empty but goal was never reached
-    return failure
-```

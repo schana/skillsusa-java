@@ -2,7 +2,7 @@ package game.internal;
 
 import game.Board;
 import game.Cell;
-import game.mover.MyMover;
+import game.MyMover;
 
 import java.util.HashSet;
 import java.util.Random;
