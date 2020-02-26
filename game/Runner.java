@@ -1,4 +1,5 @@
-import game.Board;
+package game;
+
 import game.internal.GameState;
 import game.internal.graphics.Base;
 
