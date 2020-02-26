@@ -42,7 +42,7 @@ having the lower average age.
 Your goal is to implement the `getNextDirection()` function in MyMover.java.
 `MyMover` extends `SnakeMover`, which provides the basic blueprint to follow.
 `MyMover` has access to a `Board`, which contains all the relevant state of the
-game. The `exmples` package has some completed solvers for inspiration.
+game. The `exmpleMovers` package has some completed solvers for inspiration.
 
 ## Moving algorithms
 
