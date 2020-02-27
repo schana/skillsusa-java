@@ -50,7 +50,7 @@ public class Runner implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         base.repaint();
-        if (gameState.isAlive()) {
+        if (gameState.isAlive() && gameState.getAge() < 1000) {
             gameState.step();
         } else {
             if (deathPause <= 0) {
